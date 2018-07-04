@@ -19,7 +19,7 @@ jobs:
                 echo branch [$CIRCLE_BRANCH]
                 export TARGET=STAGING
             fi
-      - run: echo target after [$TARGET]
+      - run: echo target after [$TARGET] with some change
 workflows:
   version: 2
   staging:
