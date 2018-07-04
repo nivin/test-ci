@@ -19,3 +19,8 @@ workflows:
   build-staging:
     jobs:
       - build
+          filters:
+            branches:
+              only: master
+	          tags:
+	            only: /release-.*/
