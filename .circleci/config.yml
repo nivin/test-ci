@@ -9,3 +9,4 @@ jobs:
       - run: java -version
       - run: echo branch $CIRCLE_BRANCH
       - run: echo tag $CIRCLE_TAG
+      - run: echo branch-specific command
