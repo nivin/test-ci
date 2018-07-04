@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  staging:
+  prep_staging:
     docker:
       - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
     steps:
       - checkout
       - run: echo staging
-  prod:
+  prep_prod:
     docker:
       - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
     steps:
@@ -20,7 +20,9 @@ jobs:
       - run: echo "hello world"
       - run: java -version
       - run: echo branch [$CIRCLE_BRANCH] tag [$CIRCLE_TAG]
-build_and_test:
+build_staging:
     jobs:
-      - staging
+      - prep_staging
       - build
+          requires:
+            - prep_staging      
