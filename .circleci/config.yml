@@ -22,17 +22,11 @@ jobs:
       - run: echo target after [$TARGET]
 workflows:
   version: 2
-  staging:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
-  production:
+  doit:
     jobs:
       - build:
           filters:
             branches:
               only: master
             tags:
-              only: /release-.*/
+              only: /^release-.*/
