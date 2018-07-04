@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run: echo "hello world"
       - run: java -version
-      - run: echo branch ($CIRCLE_BRANCH) tag ($CIRCLE_TAG)
+      - run: echo branch `$CIRCLE_BRANCH` tag `$CIRCLE_TAG`
