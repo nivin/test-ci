@@ -12,12 +12,12 @@ jobs:
     steps:
       - checkout
       - run: echo production
-  main:
+  build:
     docker:
       - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: echo main build [target=$CIRCLE_BRANCH]
       - run: java -version
       - run: echo branch [$CIRCLE_BRANCH] tag [$CIRCLE_TAG]
 workflows:
@@ -25,6 +25,6 @@ workflows:
   build-staging:
     jobs:
       - prep_staging
-      - main:
+      - build:
           requires:
             - prep_staging
