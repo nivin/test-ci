@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run: echo production
-  build:
+  main:
     docker:
       - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
     steps:
@@ -25,6 +25,6 @@ workflows:
   build-staging:
     jobs:
       - prep_staging
-      - build:
+      - main:
           requires:
             - prep_staging
