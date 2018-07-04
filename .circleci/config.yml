@@ -7,13 +7,15 @@ jobs:
       - checkout
       - run: java -version
       - run: echo branch [$CIRCLE_BRANCH] tag [$CIRCLE_TAG]
-      - run: |
-          if [ -n "$CIRCLE_TAG" ]
-          then
-              echo tag [$CIRCLE_TAG]
-          else
-              echo branch [$CIRCLE_BRANCH]
-          fi
+      - run: 
+          name: Apply staging/production
+          command: |
+            if [ -n "$CIRCLE_TAG" ]
+            then
+                echo tag [$CIRCLE_TAG]
+            else
+                echo branch [$CIRCLE_BRANCH]
+            fi
 workflows:
   version: 2
   staging:
