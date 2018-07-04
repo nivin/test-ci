@@ -20,9 +20,11 @@ jobs:
       - run: echo "hello world"
       - run: java -version
       - run: echo branch [$CIRCLE_BRANCH] tag [$CIRCLE_TAG]
-build_staging:
+workflows:
+  version: 2
+  build-staging:
     jobs:
       - prep_staging
-      - build
+      - build:
           requires:
-            - prep_staging      
+            - prep_staging
