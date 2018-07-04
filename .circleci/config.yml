@@ -7,15 +7,19 @@ jobs:
       - checkout
       - run: java -version
       - run: echo branch [$CIRCLE_BRANCH] tag [$CIRCLE_TAG]
+      - run: echo target before [$TARGET]
       - run: 
           name: Apply staging/production
           command: |
             if [ -n "$CIRCLE_TAG" ]
             then
                 echo tag [$CIRCLE_TAG]
+                export TARGET=PRODUCTION
             else
                 echo branch [$CIRCLE_BRANCH]
+                export TARGET=STAGING
             fi
+      - run: echo target after [$TARGET]
 workflows:
   version: 2
   staging:
